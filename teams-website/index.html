@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teams – Routine- und Notfalltransporte aus Basel</title>
+  <meta name="description" content="Teams organisiert Routinefahrten, Express- und Notfalltransporte aus Basel in die ganze Schweiz – für Medizin, Dokumente und B2B-Sendungen." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --brand: #0ea5e9;
+      --brand-dark: #0284c7;
+      --accent: #22c55e;
+      --hero-text: #f8fafc;
+      --hero-muted: #cbd5e1;
+      --max: 1120px;
+      --radius: 22px;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color: #fff;
+      font-weight: 900;
+      box-shadow: 0 10px 25px rgba(14, 165, 233, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: #e2e8f0;
+      font-size: 0.96rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+      color: white;
+      box-shadow: 0 14px 30px rgba(14, 165, 233, 0.22);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: white;
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(14,165,233,0.22), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(34,197,94,0.18), transparent 28%),
+        linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      color: var(--hero-text);
+      padding: 74px 0 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #dbeafe;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      color: var(--hero-muted);
+      font-size: 1.08rem;
+      max-width: 62ch;
+      margin: 20px 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: #dbeafe;
+      font-size: 0.95rem;
+    }
+
+    .hero-points span {
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: 0 30px 70px rgba(2, 8, 23, 0.3);
+    }
+
+    .status-box {
+      background: rgba(255,255,255,0.92);
+      color: var(--text);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .status-row:last-child { border-bottom: 0; }
+
+    .status-label {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .status-value {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .service-tag {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      position: relative;
+      padding: 24px;
+      border-radius: 24px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      background: linear-gradient(180deg, #f8fafc 0%, #eef6ff 100%);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+      color: white;
+      border-radius: 32px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.25);
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      margin: 10px 0 0;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 26px 0;
+      margin-top: 30px;
+    }
+
+    footer .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .muted { color: var(--muted); }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .cta,
+      .grid-3,
+      .grid-2,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#start">
+          <span class="brand-mark">T</span>
+          <span>Teams</span>
+        </a>
+        <div class="nav-links">
+          <a href="#leistungen">Leistungen</a>
+          <a href="#ablauf">Ablauf</a>
+          <a href="#vorteile">Vorteile</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+        <a class="btn btn-primary" href="#kontakt">Anfrage senden</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero" id="start">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Basel · Routinefahrten · Express · Notfall</div>
+        <h1>Routine- und Notfalltransporte aus Basel in die ganze Schweiz.</h1>
+        <p>
+          Teams organisiert tägliche Abholungen, Expressfahrten und planbare B2B-Transporte für Medizin,
+          Dokumente und leichte Produkte – einfach, zuverlässig und mit klaren Zustellnachweisen.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">Jetzt anfragen</a>
+          <a class="btn btn-secondary" href="#leistungen">Leistungen ansehen</a>
+        </div>
+        <div class="hero-points">
+          <span>Fixe Routinefenster</span>
+          <span>Direktfahrten</span>
+          <span>Schweizweite Zustellung</span>
+          <span>B2B-Fokus</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="status-box">
+          <div class="status-row">
+            <div>
+              <div class="status-label">Service 1</div>
+              <div class="status-value">Tägliche Routinefahrten</div>
+            </div>
+            <div class="status-label">planbar</div>
+          </div>
+          <div class="status-row">
+            <div>
+              <div class="status-label">Service 2</div>
+              <div class="status-value">Express am selben Tag</div>
+            </div>
+            <div class="status-label">direkt</div>
+          </div>
+          <div class="status-row">
+            <div>
+              <div class="status-label">Service 3</div>
+              <div class="status-value">Notfalltransport</div>
+            </div>
+            <div class="status-label">priorisiert</div>
+          </div>
+          <div class="status-row">
+            <div>
+              <div class="status-label">Typische Kunden</div>
+              <div class="status-value">Praxen, Labore, Firmen, Kanzleien</div>
+            </div>
+            <div class="status-label">B2B</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="leistungen">
+    <div class="container">
+      <div class="section-head">
+        <h2>Leistungen für planbare Touren und dringende Sendungen</h2>
+        <p>
+          Der Fokus liegt auf einfachen, klaren Transportlösungen für Unternehmen, Praxen und Organisationen,
+          die ihre täglichen Fahrten strukturierter und professioneller abwickeln möchten.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <div class="service-tag">Routine</div>
+          <h3>Tägliche Abholungen</h3>
+          <p>Feste Zeitfenster für wiederkehrende Fahrten in Basel, der Nordwestschweiz und auf definierten Schweizer Linien.</p>
+        </article>
+        <article class="card">
+          <div class="service-tag">Express</div>
+          <h3>Direktfahrten</h3>
+          <p>Sofortige Abholung und direkte Zustellung für dringende Dokumente, Proben, Medikamente oder leichte Produkte.</p>
+        </article>
+        <article class="card">
+          <div class="service-tag">Notfall</div>
+          <h3>Priorisierte Transporte</h3>
+          <p>Notfallmässige Kurierfahrten ausserhalb der normalen Routine – schnell disponiert und klar kommuniziert.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight" id="vorteile">
+    <div class="container">
+      <div class="section-head">
+        <h2>Warum Teams</h2>
+        <p>
+          Nicht einfach nur Kurier – sondern ein System für wiederkehrende Aufträge, verlässliche Prozesse und klare Kommunikation.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Einfaches System</h3>
+          <p>Routine und Notfall laufen über einen klaren Ablauf. Weniger Telefonchaos, weniger Improvisation, mehr Übersicht.</p>
+        </article>
+        <article class="card">
+          <h3>Standort Basel</h3>
+          <p>Idealer Ausgangspunkt für regionale Abholungen und schweizweite Verteilung mit kurzen Wegen und hoher Flexibilität.</p>
+        </article>
+        <article class="card">
+          <h3>B2B-Fokus</h3>
+          <p>Für Praxen, Labore, Apotheken, Kanzleien, Verwaltungen und Firmen mit regelmässigen oder dringenden Sendungen.</p>
+        </article>
+        <article class="card">
+          <h3>Saubere Zustellnachweise</h3>
+          <p>Klare Übergaben, dokumentierte Zustellungen und ein professioneller Ablauf für sensible und geschäftskritische Sendungen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <div class="container">
+      <div class="section-head">
+        <h2>So funktioniert es</h2>
+        <p>
+          Einfache Abläufe für regelmässige Touren und spontane Expressanfragen.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="step-number">1</div>
+          <h3>Anfrage senden</h3>
+          <p>Route, Zeitfenster und Sendungsart mitteilen – einmalig oder als wiederkehrender Auftrag.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">2</div>
+          <h3>Abholung</h3>
+          <p>Die Sendung wird zum vereinbarten Zeitpunkt übernommen und für die passende Tour eingeplant.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">3</div>
+          <h3>Transport</h3>
+          <p>Routinefahrten laufen planbar, dringende Aufträge werden priorisiert und direkt disponiert.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">4</div>
+          <h3>Zustellnachweis</h3>
+          <p>Die Zustellung wird sauber dokumentiert und nachvollziehbar bestätigt.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2 style="margin:0; font-size: clamp(1.8rem, 3vw, 2.6rem);">Bereit für einen einfachen Start?</h2>
+          <p>
+            Teams kann mit einem Pilotmodell für feste Routinefenster oder mit einer ersten Expresslinie starten – einfach, pragmatisch und skalierbar.
+          </p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="#kontakt" style="width:100%;">Pilot anfragen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Kontakt</h2>
+        <p>
+          Für eine erste Anfrage reichen Abholort, Zielort, Dringlichkeit und gewünschtes Zeitfenster.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Kontaktangaben</h3>
+          <div class="contact-list" style="margin-top:16px;">
+            <div class="contact-item"><strong>Firma:</strong><br>Teams</div>
+            <div class="contact-item"><strong>Standort:</strong><br>Basel-Stadt</div>
+            <div class="contact-item"><strong>Telefon:</strong><br>Telefonnummer eintragen</div>
+            <div class="contact-item"><strong>E-Mail:</strong><br>E-Mail-Adresse eintragen</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Typische Anfrage</h3>
+          <p class="muted" style="margin-top:8px;">
+            Guten Tag, wir benötigen eine tägliche Abholung in Basel um 11:30 Uhr mit Zustellung in der Region Zürich.
+            Zusätzlich möchten wir bei Bedarf Notfallfahrten kurzfristig abrufen können.
+          </p>
+          <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:12px;">
+            <a class="btn btn-primary" href="mailto:EMAIL-EINTRAGEN">E-Mail senden</a>
+            <a class="btn" href="tel:NUMMER-EINTRAGEN" style="background:#f8fafc; border:1px solid var(--line);">Anrufen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© <span id="year"></span> Teams · Routine- und Notfalltransporte aus Basel</div>
+      <div>Datenschutz · Impressum</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
